@@ -22,10 +22,10 @@ get '/' do
 end
 
 get '/query_input' do
-  #principalMaker = params[:principalMaker]
+  principalMaker = params[:principalMaker]
   subject = params[:subject]
-  #color = params[:color]
-  art_query = "https://www.rijksmuseum.nl/api/en/collection?key=YB4GHC25&format=json&imgonly=true&q=#{subject}"
+  color = params[:color]
+  art_query = "https://www.rijksmuseum.nl/api/en/collection?key=YB4GHC25&format=json&imgonly=true&q=#{subject}&q=#{principalMaker}&f.normalized32Colors.hex=#{color}"
   @response_object = HTTParty.get(art_query)
 
   @art_results = []
