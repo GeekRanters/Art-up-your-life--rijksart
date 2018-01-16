@@ -1,0 +1,14 @@
+<h1>This is the results page</h1>
+
+
+<div class="results">
+  <ul style="list-style: none;">
+  <% @art_results.each do |art_result| %>
+      <li>
+        hi <%= art_result[:name] %>
+        <img src="<%= art_result[:webImage] %>">
+        </a>
+      </li>
+  <% end %>
+  </ul>
+</div>
