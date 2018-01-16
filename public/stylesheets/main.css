@@ -1,0 +1,13 @@
+body{
+  background-color: green;
+}
+
+.thumbnail{
+  max-width: 480px;
+  max-height: 115px;
+}
+
+.short_description{
+  max-width: 900px;
+  max-height: 115px;
+}

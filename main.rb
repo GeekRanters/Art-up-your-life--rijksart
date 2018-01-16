@@ -36,11 +36,8 @@ get '/query_input' do
     @objectNumber = artwork["objectNumber"]
     @principalMaker = artwork["principalOrFirstMaker"]
 
-    detail_query = "https://www.rijksmuseum.nl/api/en/collection/#{@objectNumber}?key=YB4GHC25&format=json"
-    @detail = HTTParty.get(detail_query)
-    @webImage = @detail["artObject"]["webImage"]["url"]
 
-    @art_results.push({name: @name, objectNumber: @objectNumber, principalMaker: @principalMaker, webImage: @webImage})
+    @art_results.push({name: @name, objectNumber: @objectNumber, principalMaker: @principalMaker})
   end
 
   erb :results
@@ -60,4 +57,10 @@ end
 
 get '/bedroom' do
   erb :bedroom
+end
+
+get '/detail' do
+  detail_query = "https://www.rijksmuseum.nl/api/en/collection/#{@objectNumber}?key=YB4GHC25&format=json"
+  @detail = HTTParty.get(detail_query)
+  @webImage = @detail["artObject"]["webImage"]["url"]
 end
