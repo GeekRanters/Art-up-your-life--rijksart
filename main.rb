@@ -5,7 +5,6 @@
 #request below returns detailed info on object
 #https://www.rijksmuseum.nl/api/en/collection/RP-P-1885-A-9460?key=YB4GHC25&format=json
 
-
 require 'sinatra'
 require 'sinatra/reloader'
 require 'HTTParty'
@@ -25,21 +24,16 @@ get '/query_input' do
   principalMaker = params[:principalMaker]
   subject = params[:subject]
   color = params[:color]
-  art_query = "https://www.rijksmuseum.nl/api/en/collection?key=YB4GHC25&format=json&imgonly=true&q=#{subject}&q=#{principalMaker}&f.normalized32Colors.hex=#{color}"
+  art_query = "https://www.rijksmuseum.nl/api/en/collection?key=YB4GHC25&format=json&imgonly=true&q=#{subject}&p=#{principalMaker}&f.normalized32Colors.hex=#{color}"
   @response_object = HTTParty.get(art_query)
 
   @art_results = []
   @response_object["artObjects"].each do |artwork|
-
-
     @name = artwork["title"]
     @objectNumber = artwork["objectNumber"]
     @principalMaker = artwork["principalOrFirstMaker"]
-
-
     @art_results.push({name: @name, objectNumber: @objectNumber, principalMaker: @principalMaker})
   end
-
   erb :results
 end
 
@@ -59,8 +53,14 @@ get '/bedroom' do
   erb :bedroom
 end
 
+def show_detail(objectNumber)
+  objectNumber = params[:objectNumber]
+  @detail_request = "https://www.rijksmuseum.nl/api/en/collection/#{objectNumber}?key=YB4GHC25&format=json"
+  @detail_result = HTTParty.get(@detail_request)
+  @webImage = @detail_result["artObject"]["webImage"]["url"]
+  erb :detail
+end
+
 get '/detail' do
-  detail_query = "https://www.rijksmuseum.nl/api/en/collection/#{@objectNumber}?key=YB4GHC25&format=json"
-  @detail = HTTParty.get(detail_query)
-  @webImage = @detail["artObject"]["webImage"]["url"]
+  show_detail(params[:objectNumber])
 end

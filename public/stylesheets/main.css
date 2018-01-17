@@ -11,3 +11,8 @@ body{
   max-width: 900px;
   max-height: 115px;
 }
+
+.detailimage{
+  max-width: 1920px;
+  max-height: 460px;
+}
