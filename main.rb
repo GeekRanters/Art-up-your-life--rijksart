@@ -26,7 +26,6 @@ get '/query_input' do
   color = params[:color]
   art_query = "https://www.rijksmuseum.nl/api/en/collection?key=YB4GHC25&format=json&imgonly=true&q=#{subject}&p=#{principalMaker}&f.normalized32Colors.hex=#{color}"
   @response_object = HTTParty.get(art_query)
-
   @art_results = []
   @response_object["artObjects"].each do |artwork|
     @name = artwork["title"]
