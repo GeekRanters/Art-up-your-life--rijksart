@@ -1,3 +1,3 @@
-class ArtObject < ActiveRecord::Base
-  
+class Artobject < ActiveRecord::Base
+
 end

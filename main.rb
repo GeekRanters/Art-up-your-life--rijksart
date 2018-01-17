@@ -8,11 +8,15 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'HTTParty'
-require_relative 'db_config'
 require 'pry'
-require_relative'models/artobject'
-require_relative'models/tag'
-require_relative'models/user'
+require_relative 'db_config'
+require_relative 'models/artobject'
+require_relative 'models/tag'
+require_relative 'models/user'
+require_relative 'models/artobjects_favourite'
+require_relative 'models/artobjects_tag'
+
+
 
 enable :sessions
 
