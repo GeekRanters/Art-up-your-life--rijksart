@@ -1,8 +1,5 @@
-<h1>Query is: <%= @art_query%></h1>
-<p>
-  maker:<%=@principalMaker%>
-  subject:<%=@subject%>color:<%=@color%> 
-</p>
+<h1>Results page</h1>
+<p><%= @art_results.to_s %>
 
 <div class="results">
   <ul style="list-style: none;">
@@ -10,7 +7,7 @@
       <li class="short_description">
         <a href="/detail?objectNumber=<%=art_result[:objectNumber]%>">
         <img class="thumbnail" src="http://lh5.ggpht.com/SgH3Qo-vYI8GGm7-b-Qt6lXgsCAIoU2VDRwO5LYSBVNhhbZCetcvc88ZPi518MTy0MHDrna4X4ZC1ymxVJVpzps8gqw=s0">
-          <%= art_result[:name] %>
+          <%=art_result[:name] %>
         </a>
       </li>
   <% end %>

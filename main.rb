@@ -30,8 +30,7 @@ get '/query_input' do
   @response_object["artObjects"].each do |artwork|
     @name = artwork["title"]
     @objectNumber = artwork["objectNumber"]
-    @principalMaker = artwork["principalOrFirstMaker"]
-    @art_results.push({name: @name, objectNumber: @objectNumber, principalMaker: @principalMaker})
+    @art_results.push({name: @name, objectNumber: @objectNumber})
   end
   erb :results
 end
@@ -60,6 +59,7 @@ def show_detail(objectNumber)
   @webImage = @detail_result["artObject"]["webImage"]["url"]
   @principalMaker = @detail_result["artObject"]["principalMaker"]
   @label = @detail_result["artObject"]["plaqueDescriptionEnglish"]
+  @museumurl = "https://www.rijksmuseum.nl/en/collection/#{@objectNumber}"
   @subject = @detail_result["artObject"]["classification"]["iconClassDescription"]
   @colors = @detail_result["artObject"]["colors"]
   erb :detail
