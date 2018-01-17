@@ -6,22 +6,30 @@
   <link rel='stylesheet' href='/stylesheets/main.css'>
 </head>
 <body>
-  <nav>
-      <a href="/">Search</a>
-      <a href="/about">About</a>
-      <a href="/stubby">Stubby holder</a>
-      <a href="/shirt">T-shirt</a>
-      <a href="/print">Art Print</a>
+  <header>
+    <nav>
+        <a href="/">Search</a>
+        <a href="/about">About</a>
+        <a href="/stubby">Stubby holder</a>
+        <a href="/shirt">T-shirt</a>
+        <a href="/print">Art Print</a>
+        <% if logged_in? %>
+        <a href="/favourites">Favourites</a>
+        <% end %>
+    </nav>
 
-  </nav>
 
+    <% if !logged_in? %>
+        <a href="/login"><button class="loginbutton">Log in</button></a>
+    <% end %>
 
-  <% if !logged_in? %>
-    <form action="/session" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <button class="loginbutton">Log in</button>
-    </form>
-  <% end %>
+    <% if logged_in? %>
+      <form class="logoutform" action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button class="logoutbutton">Log out</button>
+      </form>
+    <% end %>
+  </header>
 
 
 

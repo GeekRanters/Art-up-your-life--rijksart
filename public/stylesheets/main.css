@@ -5,6 +5,12 @@ body{
 h1,h2{
   text-align: center;
 }
+
+nav{
+  margin-top: 4px;
+  width: 500px;
+  display: inline-block;
+}
 .thumbnail{
   max-width: 480px;
   max-height: 115px;
@@ -40,15 +46,19 @@ h1,h2{
   width: 100px;
 }
 
-.loginbutton{
+.loginbutton, .logoutbutton{
   display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: 20px;
   border: 2px solid #777;
   border-radius: 10px;
   outline: none;
-  background-color:#FF6633;
-  height: 40px;
-  width: 100px;
+  background-color:lightblue;
+  height: 30px;
+  width: 80px;
 }
+
 
 .collections_box{
   display:block;

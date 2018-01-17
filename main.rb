@@ -78,13 +78,26 @@ post '/session' do
   user = User.find_by(email: params[:email])
 
   if user && user.authenticate(params[:password])
-    session[:user_id] = user.id 
+    session[:user_id] = user.id
     redirect '/'
   else
-    erb :login
+    erb :register
   end
 end
 
+post '/users' do
+  email = params[:email]
+  password = params[:password]
+  u = User.new
+  u.email = email
+  u.password = password
+  u.save
+  redirect '/'
+end
+
+get '/register' do
+  erb :register
+end
 
 delete '/session' do
   session[:user_id] = nil

@@ -19,9 +19,12 @@ CREATE TABLE tags(
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
-  email_address TEXT NOT NULL,
+  email TEXT NOT NULL,
   password_digest TEXT NOT NULL
 );
+
+
+
 
 CREATE TABLE artObjects_tags(
   id SERIAL PRIMARY KEY,
