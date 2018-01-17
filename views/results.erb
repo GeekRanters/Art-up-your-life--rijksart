@@ -1,5 +1,4 @@
-<h1>This is the results page</h1>
-
+<h1>Rijksmuseum search results</h1>
 
 <div class="results">
   <ul style="list-style: none;">
@@ -7,8 +6,7 @@
       <li class="short_description">
         <a href="/detail?objectNumber=<%=art_result[:objectNumber]%>">
         <img class="thumbnail" src="http://lh5.ggpht.com/SgH3Qo-vYI8GGm7-b-Qt6lXgsCAIoU2VDRwO5LYSBVNhhbZCetcvc88ZPi518MTy0MHDrna4X4ZC1ymxVJVpzps8gqw=s0">
-          <%= art_result[:name] %> - <%= art_result[:objectNumber] %> -
-          <%= art_result[:principalMaker] %>
+          <%= art_result[:name] %>
         </a>
       </li>
   <% end %>

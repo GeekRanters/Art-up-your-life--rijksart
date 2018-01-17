@@ -69,3 +69,35 @@ end
 get '/detail' do
   show_detail(params[:objectNumber])
 end
+
+get '/login' do
+  erb :login
+end
+
+post '/session' do
+  user = User.find_by(email: params[:email])
+
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id 
+    redirect '/'
+  else
+    erb :login
+  end
+end
+
+
+delete '/session' do
+  session[:user_id] = nil
+  redirect '/login'
+end
+
+helpers do
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
+
+  def logged_in? #this method returns a boolean
+    !!current_user
+  end
+
+end

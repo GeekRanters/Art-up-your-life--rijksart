@@ -1,9 +1,14 @@
-<h1><%= @title %></h1>
+<div class="resultCanvas">
+  <h1><%= @title %></h1>
+  <h2>Artist: <%= @principalMaker %></h2>
 
-<img class="detailimage" src=<%= @webImage %>
-<div class="detaildescription">
-<p><%= @principalMaker %></p>
-<p><%= @label %></p>
-<p><%= @subject %></p>
-<p><%= @colors %></p>
+  <div class="detailimageresult">
+    <a href=<%= @webImage %>>
+      <img class="detailimage" src=<%= @webImage %>>
+    </a>
+  </div>
+  
+  <div class="detaildescription">
+  <p>Description: <%= @label %></p>
+  </div>
 </div>
