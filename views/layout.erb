@@ -12,7 +12,18 @@
       <a href="/stubby">Stubby holder</a>
       <a href="/shirt">T-shirt</a>
       <a href="/print">Art Print</a>
+
   </nav>
+
+
+  <% if !logged_in? %>
+    <form action="/session" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button class="loginbutton">Log in</button>
+    </form>
+  <% end %>
+
+
 
   <%= yield %>
 
