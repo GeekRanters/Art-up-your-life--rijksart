@@ -14,7 +14,3 @@ end
 get '/detail' do
   show_detail(params[:objectNumber])
 end
-
-
-@detail_result = HTTParty.get(detail_request)
-@webImage = @detail["artObject"]["webImage"]["url"]

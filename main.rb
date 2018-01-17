@@ -54,10 +54,15 @@ get '/bedroom' do
 end
 
 def show_detail(objectNumber)
-  objectNumber = params[:objectNumber]
-  @detail_request = "https://www.rijksmuseum.nl/api/en/collection/#{objectNumber}?key=YB4GHC25&format=json"
+  @objectNumber = params[:objectNumber]
+  @detail_request = "https://www.rijksmuseum.nl/api/en/collection/#{@objectNumber}?key=YB4GHC25&format=json"
   @detail_result = HTTParty.get(@detail_request)
+  @title = @detail_result["artObject"]["title"]
   @webImage = @detail_result["artObject"]["webImage"]["url"]
+  @principalMaker = @detail_result["artObject"]["principalMaker"]
+  @label = @detail_result["artObject"]["plaqueDescriptionEnglish"]
+  @subject = @detail_result["artObject"]["classification"]["iconClassDescription"]
+  @colors = @detail_result["artObject"]["colors"]
   erb :detail
 end
 
