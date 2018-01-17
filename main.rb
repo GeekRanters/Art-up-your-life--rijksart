@@ -86,12 +86,10 @@ post '/session' do
 end
 
 post '/users' do
-  email = params[:email]
-  password = params[:password]
-  u = User.new
-  u.email = email
-  u.password = password
-  u.save
+  user = User.new
+  user.email = params[:email]
+  user.password = params[:password]
+  user.save
   redirect '/'
 end
 
