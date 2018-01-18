@@ -114,7 +114,7 @@ post '/user_artobject' do
 end
 
 get '/favourites' do
-  @favourites_for_current_user = User.find_by(id:current_user.id).artobjects
+  @favourites_for_current_user = User.find_by(id:current_user.id).artobjects.reverse
   erb :favourites
 end
 

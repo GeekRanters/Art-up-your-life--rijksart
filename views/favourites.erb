@@ -2,11 +2,11 @@
 
 <div class="results">
   <ul style="list-style: none;">
-  <% @favourites_for_current_user.each do |art_result| %>
+  <% @favourites_for_current_user.each do |artobject| %>
       <li class="short_description">
-        <a href="/detail?objectnumber=<%=art_result[:objectnumber]%>">
-        <img class="thumbnail" src="<%=art_result[:webimage]%>">
-          <%=art_result[:object_id] %>
+        <a href="/detail?objectnumber=<%=artobject[:objectnumber]%>">
+        <img class="thumbnail" src="<%=artobject[:webimage]%>">
+          <%=artobject[:title]%> by <%=artobject[:principalmaker]%>
         </a>
       </li>
   <% end %>
