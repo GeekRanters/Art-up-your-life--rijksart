@@ -66,7 +66,7 @@ nav{
   margin-right:auto;
   margin-top: 10px;
   width: 415px;
-  height: 50px;
+  height:60px;
   background-color: yellow;
   border: 1px black solid;
 }
@@ -75,7 +75,7 @@ nav{
   display:block;
   margin-left:auto;
   margin-right:auto;
-  margin-top: 120px;
+  margin-top: 100px;
   width: 415px;
   height:400px;
   background-color: white;
@@ -91,12 +91,12 @@ html {
   margin-bottom: 5px;
 }
 */
-label {
+.collections_box>label {
   margin-right: 15px;
   line-height: 32px;
 }
 
-input {
+.collections_box>input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -114,12 +114,11 @@ input {
   top: 4px;
 }
 
-input:checked {
+.collections_box > input:checked {
   border: 6px solid black;
 }
 
-button,
-legend {
+.collections_box > button,legend {
   color: white;
   background-color: black;
   padding: 5px 10px;
@@ -128,12 +127,12 @@ legend {
   font-size: 14px;
 }
 
-button:hover,
+.collections_box > button:hover,
 button:focus {
   color: #999;
 }
 
-button:active {
+.collections_box > button:active {
   background-color: white;
   color: black;
   outline: 1px solid black;

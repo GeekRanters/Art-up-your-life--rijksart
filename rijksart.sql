@@ -5,13 +5,18 @@ CREATE DATABASE rijksart;
 CREATE TABLE artObjects(
   id SERIAL PRIMARY KEY,
   objectNumber TEXT NOT NULL,
+  title TEXT NOT NULL,
   principalMaker TEXT,
-  description TEXT NOT NULL,
-  webImage TEXT NOT NULL,
+  description TEXT,
+  webImage TEXT,
   museumurl TEXT NOT NULL,
   subject TEXT,
   colors TEXT
   );
+
+  ALTER TABLE artObjects ADD COLUMN title TEXT;
+
+
 
 CREATE TABLE tags(
   id SERIAL PRIMARY KEY,

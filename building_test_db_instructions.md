@@ -1,5 +1,6 @@
 b=Artobject.new
 b.objectnumber="Not real"
+b.title="Fake news"
 b.principalmaker="Ronald McDonald"
 b.description="Short."
 b.webimage="http://lh4.ggpht.com/ufTRnc1cU6b_nKKqCSWQxcszb3tuPhlZhr4YTr1gWTJSBAzVl1ka0nRxjKYaxmH7mIzKCPqfwbcKdMVaCmi-fOFzrQ=s0"

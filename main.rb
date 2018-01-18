@@ -56,7 +56,7 @@ get '/bedroom' do
 end
 
 def show_detail(objectNumber)
-  @objectNumber = params[:objectNumber]
+  @objectNumber = objectNumber #params[:objectNumber]
   @detail_request = "https://www.rijksmuseum.nl/api/en/collection/#{@objectNumber}?key=YB4GHC25&format=json"
   @detail_result = HTTParty.get(@detail_request)
   @title = @detail_result["artObject"]["title"]
@@ -71,6 +71,27 @@ end
 
 get '/detail' do
   show_detail(params[:objectNumber])
+end
+
+def add_tags(objectNumber)
+  @objectNumber = objectNumber
+  @detail_request = "https://www.rijksmuseum.nl/api/en/collection/#{@objectNumber}?key=YB4GHC25&format=json"
+  @detail_result = HTTParty.get(@detail_request)
+  artobject=Artobject.new
+  artobject.objectnumber=@objectNumber
+  artobject.principalmaker=@detail_result["artObject"]["principalMaker"]
+  artobject.title=@detail_result["artObject"]["title"]
+  artobject.description=@detail_result["artObject"]["plaqueDescriptionEnglish"]
+  artobject.webimage=@detail_result["artObject"]["webImage"]["url"]
+  artobject.museumurl="https://www.rijksmuseum.nl/en/collection/#{@objectNumber}"
+  artobject.subject=@detail_result["artObject"]["classification"]["iconClassDescription"]
+  artobject.colors=@detail_result["artObject"]["colors"]
+  artobject.save
+  erb :index
+end
+
+post '/artobjects_tag' do
+  add_tags(params[:objectNumber])
 end
 
 get '/login' do
