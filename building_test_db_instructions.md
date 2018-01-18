@@ -1,3 +1,10 @@
+
+heroku pg:backups:restore 'https://github.com/karengeerts/Art-up-your-life---rijksart/raw/master/db.dump' DATABASE_URL
+
+
+
+
+
 b=Artobject.new
 b.objectnumber="Not real"
 b.title="Other news"
