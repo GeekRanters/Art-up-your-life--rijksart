@@ -103,21 +103,18 @@ post '/tag_artobject' do
 end
 
 def add_to_user_artobjects(objectnumber)
-  user_id = current_user.id
   art_object=Artobject.find_by(objectnumber:objectnumber)
-  user_id.artobjects.push(art_object)
-  redirect '/'
+  current_user.artobjects << art_object
 end
 
 post '/user_artobject' do
   add_to_artobjects(params[:objectnumber])
   add_to_user_artobjects(params[:objectnumber])
-  return "Hi"
-  #redirect '/'
+  redirect '/favourites'
 end
 
 get '/favourites' do
-  @favourites_for_current_user = UserArtobject.find_by(user_id:current_user.id)
+  @favourites_for_current_user = User.find_by(id:current_user.id).artobjects
   erb :favourites
 end
 
