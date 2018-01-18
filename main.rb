@@ -6,7 +6,7 @@
 #https://www.rijksmuseum.nl/api/en/collection/RP-P-1885-A-9460?key=YB4GHC25&format=json
 
 require 'sinatra'
-require 'sinatra/reloader'
+#require 'sinatra/reloader'
 require 'HTTParty'
 require 'pry'
 require_relative 'db_config'
