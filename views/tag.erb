@@ -1,0 +1,14 @@
+<h1><%= @tag_label%> art works</h1>
+
+<div class="results">
+  <ul style="list-style: none;">
+  <% @tagresults.each do |artobject| %>
+      <li class="short_description">
+        <a href="/detail?objectnumber=<%=artobject[:objectnumber]%>">
+        <img class="thumbnail" src="<%=artobject[:webimage]%>">
+        <%=artobject[:title]%> by <%=artobject[:principalmaker]%>
+        </a>
+      </li>
+  <% end %>
+  </ul>
+</div>

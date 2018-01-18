@@ -6,6 +6,7 @@
 #https://www.rijksmuseum.nl/api/en/collection/RP-P-1885-A-9460?key=YB4GHC25&format=json
 
 require 'sinatra'
+require "sinatra/reloader"
 require 'httparty'
 require 'pry'
 require_relative 'db_config'
@@ -40,18 +41,6 @@ get '/about' do
   erb :about
 end
 
-get '/landing' do
-  erb :landing
-end
-
-get '/lounge' do
-  erb :lounge
-end
-
-get '/bedroom' do
-  erb :bedroom
-end
-
 def show_detail(objectnumber)
   @objectnumber = objectnumber #params[:objectNumber]
   @detail_request = "https://www.rijksmuseum.nl/api/en/collection/#{@objectnumber}?key=YB4GHC25&format=json"
@@ -83,7 +72,6 @@ def add_to_artobjects(objectnumber)
     artobject.colors=@detail_result["artObject"]["colors"]
     artobject.save
   end
-    erb :index
 end
 
 def add_to_tag_artobjects(objectnumber, tag)
@@ -93,13 +81,12 @@ def add_to_tag_artobjects(objectnumber, tag)
   art_object = Artobject.find_by(objectnumber:objectnumber)
   t.artobjects.push(art_object)
   t.save
-  redirect '/'
 end
 
 post '/tag_artobject' do
   add_to_artobjects(params[:objectnumber])
   add_to_tag_artobjects(params[:objectnumber], params[:tag])
-  redirect '/'
+  redirect "/tag?tag=#{params[:tag]}"
 end
 
 def add_to_user_artobjects(objectnumber)
@@ -117,6 +104,14 @@ get '/favourites' do
   @favourites_for_current_user = User.find_by(id:current_user.id).artobjects.reverse
   erb :favourites
 end
+
+get '/tag' do
+  @tag_label=params[:tag]
+  @tagresults = Tag.find_by(label: @tag_label).artobjects.reverse
+  erb :tag
+end
+
+
 
 get '/login' do
   erb :login
