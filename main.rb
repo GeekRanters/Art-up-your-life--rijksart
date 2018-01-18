@@ -87,7 +87,7 @@ def add_to_artobjects(objectnumber)
     erb :index
 end
 
-def add_to_artobjects_tags(objectnumber, tag)
+def add_to_tag_artobjects(objectnumber, tag)
   # no check if relation already exists
   t=TagArtObject.new
   t.tag_id = Tag.find_by(label: tag).id
@@ -95,28 +95,29 @@ def add_to_artobjects_tags(objectnumber, tag)
   t.save
 end
 
-post '/artobjects_tag' do
+post '/tag_artobject' do
   add_to_artobjects(params[:objectnumber])
-  add_to_artobjects_tags(params[:objectnumber], params[:tag])
+  add_to_tag_artobjects(params[:objectnumber], params[:tag])
   redirect '/'
 end
 
-def add_to_artobjects_favourites(objectnumber)
-  f=UserArtObject.new
+def add_to_user_artobjects(objectnumber)
+  f=UserArtobject.new
   f.artobject_id= Artobject.find_by(objectnumber:objectnumber).id
   f.user_id = current_user.id
   f.save
   redirect '/'
 end
 
-post '/artobjects_favourite' do
+post '/user_artobject' do
   add_to_artobjects(params[:objectnumber])
-  add_to_artobjects_favourites(params[:objectnumber])
-  redirect '/'
+  add_to_user_artobjects(params[:objectnumber])
+  return "Hi"
+  #redirect '/'
 end
 
 get '/favourites' do
-  @favourites_for_current_user = UserArtObject.find_by(user_id:current_user.id)
+  @favourites_for_current_user = UserArtobject.find_by(user_id:current_user.id)
   erb :favourites
 end
 

@@ -1,4 +1,0 @@
-pg_dump -Fc --no-acl --no-owner -h localhost -U karen rijksart > db.dump
-
-#Replace db_username with your own computer name (i.e. karen)
-#The db_name is rijksart

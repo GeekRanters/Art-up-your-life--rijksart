@@ -10,7 +10,7 @@
 
   <div class="collections_box">
 
-    <form action="/artobjects_tag" method="post">
+    <form action="/tag_artobject" method="post">
       <fieldset>
         <legend>Add this artwork to a collection.</legend>
           <div>
@@ -31,7 +31,7 @@
       </fieldset>
     </form>
     <% if logged_in? %>
-      <form action="/artobjects_favourite" method="post">
+      <form action="/user_artobject" method="post">
         <input type="hidden" name="objectnumber" value="<%=@objectnumber%>">
         <button>Add to favourites</button>
       </form>
