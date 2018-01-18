@@ -88,10 +88,12 @@ end
 
 def add_to_tag_artobjects(objectnumber, tag)
   # no check if relation already exists
-  t = TagArtobject.new
-  t.tag_id = Tag.find_by(label:tag).id
-  t.artobject_id = Artobject.find_by(objectnumber:objectnumber).id
+  #t = TagArtobject.new
+  t = Tag.find_by(label:tag)
+  art_object = Artobject.find_by(objectnumber:objectnumber)
+  t.artobjects.push(art_object)
   t.save
+  redirect '/'
 end
 
 post '/tag_artobject' do
@@ -101,10 +103,9 @@ post '/tag_artobject' do
 end
 
 def add_to_user_artobjects(objectnumber)
-  f=UserArtobject.new
-  f.artobject_id= Artobject.find_by(objectnumber:objectnumber).id
-  f.user_id = current_user.id
-  f.save
+  user_id = current_user.id
+  art_object=Artobject.find_by(objectnumber:objectnumber)
+  user_id.artobjects.push(art_object)
   redirect '/'
 end
 
