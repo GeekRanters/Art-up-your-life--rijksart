@@ -31,6 +31,11 @@ t=Tag.new
 t.label="t-shirt"
 t.save
 
+t=Tag.new
+t.label="art print"
+t.save
+
+
 t=Artobjects_tag.new
 t.tag_id = 2
 t.art_object_id = 2

@@ -9,10 +9,29 @@
   </div>
 
   <div class="collections_box">
-    <button type="button" name="shirt">T-Shirt</button>
-    <button type="button" name="stubby">Stubby Holder</button>
-    <button type="button" name="print">Art Print</button>
-    <button type="button" name="favourite">Favourite</button>
+
+    <form action="/artobjects_tag" method="post">
+      <fieldset>
+        <legend>Add this artwork to a collection.</legend>
+          <div>
+            <input type="radio" name="stubby">
+            <label for="stubby">Stubby holder</label>
+
+            <input type="radio" name="tshirt">
+            <label for="tshirt">T-Shirt</label>
+
+            <input type="radio" name="artprint">
+            <label for="artprint">Art Print</label>
+          </div>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
+      </fieldset>
+    </form>
+
+    <form action="/artobjects_favourite" method="post">
+      <button>Add to favourites</button>
+    </form>
   </div>
 
   <div class="detaildescription">
