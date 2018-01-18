@@ -7,7 +7,7 @@
 
 require 'sinatra'
 #require 'sinatra/reloader'
-require 'HTTParty'
+require 'httparty'
 require 'pry'
 require_relative 'db_config'
 require_relative 'models/artobject'

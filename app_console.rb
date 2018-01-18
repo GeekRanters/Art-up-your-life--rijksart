@@ -1,5 +1,5 @@
 require 'pry'
-require 'HTTParty'
+require 'httparty'
 require_relative 'db_config'
 require_relative 'models/artobject'
 require_relative 'models/tag'
