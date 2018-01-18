@@ -6,7 +6,6 @@
 #https://www.rijksmuseum.nl/api/en/collection/RP-P-1885-A-9460?key=YB4GHC25&format=json
 
 require 'sinatra'
-require 'sinatra/reloader'
 require 'httparty'
 require 'pry'
 require_relative 'db_config'
@@ -89,8 +88,8 @@ end
 
 def add_to_tag_artobjects(objectnumber, tag)
   # no check if relation already exists
-  t=TagArtObject.new
-  t.tag_id = Tag.find_by(label: tag).id
+  t = TagArtobject.new
+  t.tag_id = Tag.find_by(label:tag).id
   t.artobject_id = Artobject.find_by(objectnumber:objectnumber).id
   t.save
 end
