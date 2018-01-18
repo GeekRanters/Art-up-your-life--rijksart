@@ -16,13 +16,13 @@
           <div>
             <input type="hidden" name="objectnumber" value="<%=@objectnumber%>">
 
-            <input type="radio" name="stubby">
+            <input type="radio" value="stubby holder" name="tag">
             <label for="stubby">Stubby holder</label>
 
-            <input type="radio" name="tshirt">
+            <input type="radio" value="t-shirt" name="tag">
             <label for="tshirt">T-Shirt</label>
 
-            <input type="radio" name="artprint">
+            <input type="radio" value="art print "name="tag">
             <label for="artprint">Art Print</label>
           </div>
           <div>
@@ -30,11 +30,12 @@
           </div>
       </fieldset>
     </form>
-
-    <form action="/artobjects_favourite" method="post">
-      <button>Add to favourites</button>
-    </form>
-  </div>
+    <% if logged_in? %>
+      <form action="/artobjects_favourite" method="post">
+        <button>Add to favourites</button>
+      </form>
+    <% end %>
+      </div>
 
   <div class="detaildescription">
   <p>Description: <%= @label %></p>

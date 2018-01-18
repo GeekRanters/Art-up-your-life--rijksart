@@ -63,7 +63,6 @@ def show_detail(objectnumber)
   @webImage = @detail_result["artObject"]["webImage"]["url"]
   @principalMaker = @detail_result["artObject"]["principalMaker"]
   @label = @detail_result["artObject"]["plaqueDescriptionEnglish"]
-
   erb :detail
 end
 
@@ -90,14 +89,26 @@ def add_to_artobjects(objectnumber)
     erb :index
 end
 
-def add_to_artobjects_tags(objectnumber,stubby,tshirt,artprint)
-  erb :index
+def add_to_artobjects_tags(objectnumber, tag)
+  # no check if relation already exists
+  t=Artobjects_tag.new
+  t.tag_id = Tag.find_by(label: tag).id
+  t.art_object_id = Artobject.find_by(objectnumber:"#{objectnumber}").id
+  t.save
 end
 
 post '/artobjects_tag' do
   add_to_artobjects(params[:objectnumber])
-  add_to_artobjects_tags(params[:objectnumber, :stubby, :tshirt, :artprint])
+  add_to_artobjects_tags(params[:objectnumber], params[:tag])
+  redirect '/'
 end
+
+post '/artobjects_favourite' do
+  add_to_artobjects(params[:objectnumber])
+  add_to_artobjects_favourites(params[:objectnumber], params[:user_id])
+  redirect '/'
+end
+
 
 get '/login' do
   erb :login
