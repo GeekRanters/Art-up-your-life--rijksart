@@ -6,17 +6,15 @@
 #https://www.rijksmuseum.nl/api/en/collection/RP-P-1885-A-9460?key=YB4GHC25&format=json
 
 require 'sinatra'
-#require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'httparty'
 require 'pry'
 require_relative 'db_config'
 require_relative 'models/artobject'
 require_relative 'models/tag'
 require_relative 'models/user'
-require_relative 'models/artobjects_favourite'
-require_relative 'models/artobjects_tag'
-
-
+require_relative 'models/tag_artobject'
+require_relative 'models/user_artobject'
 
 enable :sessions
 
@@ -91,9 +89,9 @@ end
 
 def add_to_artobjects_tags(objectnumber, tag)
   # no check if relation already exists
-  t=Artobjects_tag.new
+  t=TagArtObject.new
   t.tag_id = Tag.find_by(label: tag).id
-  t.art_object_id = Artobject.find_by(objectnumber:"#{objectnumber}").id
+  t.artobject_id = Artobject.find_by(objectnumber:objectnumber).id
   t.save
 end
 
@@ -103,12 +101,24 @@ post '/artobjects_tag' do
   redirect '/'
 end
 
-post '/artobjects_favourite' do
-  add_to_artobjects(params[:objectnumber])
-  add_to_artobjects_favourites(params[:objectnumber], params[:user_id])
+def add_to_artobjects_favourites(objectnumber)
+  f=UserArtObject.new
+  f.artobject_id= Artobject.find_by(objectnumber:objectnumber).id
+  f.user_id = current_user.id
+  f.save
   redirect '/'
 end
 
+post '/artobjects_favourite' do
+  add_to_artobjects(params[:objectnumber])
+  add_to_artobjects_favourites(params[:objectnumber])
+  redirect '/'
+end
+
+get '/favourites' do
+  @favourites_for_current_user = UserArtObject.find_by(user_id:current_user.id)
+  erb :favourites
+end
 
 get '/login' do
   erb :login

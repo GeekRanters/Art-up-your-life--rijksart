@@ -4,8 +4,8 @@ require_relative 'db_config'
 require_relative 'models/artobject'
 require_relative 'models/tag'
 require_relative 'models/user'
-require_relative 'models/artobjects_favourite'
-require_relative 'models/artobjects_tag'
+require_relative 'models/tag_artobject'
+require_relative 'models/user_artobject'
 
 art_query = "https://www.rijksmuseum.nl/api/en/collection?key=YB4GHC25&format=json&imgonly=true&q=amersfoort"
 @artobjects = HTTParty.get(art_query)

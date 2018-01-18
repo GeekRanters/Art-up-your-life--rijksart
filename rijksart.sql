@@ -2,7 +2,7 @@ CREATE DATABASE rijksart;
 
 \c rijksart
 
-CREATE TABLE artObjects(
+CREATE TABLE artobjects(
   id SERIAL PRIMARY KEY,
   objectNumber TEXT NOT NULL,
   title TEXT NOT NULL,
@@ -13,10 +13,6 @@ CREATE TABLE artObjects(
   subject TEXT,
   colors TEXT
   );
-
-  ALTER TABLE artObjects ADD COLUMN title TEXT;
-
-
 
 CREATE TABLE tags(
   id SERIAL PRIMARY KEY,
@@ -29,18 +25,18 @@ CREATE TABLE users(
   password_digest TEXT NOT NULL
 );
 
-CREATE TABLE artObjects_tags(
+CREATE TABLE tag_artobjects(
 	id SERIAL PRIMARY KEY,
 	tag_id INTEGER NOT NULL,
-  art_object_id INTEGER NOT NULL,
+  artobject_id INTEGER NOT NULL,
   FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE RESTRICT,
-  FOREIGN KEY (art_object_id) REFERENCES artobjects(id) ON DELETE RESTRICT
+  FOREIGN KEY (artobject_id) REFERENCES artobjects(id) ON DELETE RESTRICT
 );
 
-CREATE TABLE artObjects_favourites(
+CREATE TABLE user_artobjects(
 	id SERIAL PRIMARY KEY,
 	user_id INTEGER NOT NULL,
-  art_object_id INTEGER NOT NULL,
+  artobject_id INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
-  FOREIGN KEY (art_object_id) REFERENCES artobjects(id) ON DELETE RESTRICT
+  FOREIGN KEY (artobject_id) REFERENCES artobjects(id) ON DELETE RESTRICT
 );

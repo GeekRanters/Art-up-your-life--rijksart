@@ -32,6 +32,7 @@
     </form>
     <% if logged_in? %>
       <form action="/artobjects_favourite" method="post">
+        <input type="hidden" name="objectnumber" value="<%=@objectnumber%>">
         <button>Add to favourites</button>
       </form>
     <% end %>

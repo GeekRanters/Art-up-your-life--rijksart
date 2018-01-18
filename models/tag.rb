@@ -1,4 +1,4 @@
 class Tag < ActiveRecord::Base
-  has_many :artobjects_tags
-  has_many :artobjects, through: :artobjects_tags
+  has_many :tag_artobjects
+  has_many :artobjects, through: :tag_artobjects
 end
