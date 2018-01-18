@@ -63,9 +63,7 @@ def show_detail(objectnumber)
   @webImage = @detail_result["artObject"]["webImage"]["url"]
   @principalMaker = @detail_result["artObject"]["principalMaker"]
   @label = @detail_result["artObject"]["plaqueDescriptionEnglish"]
-  @museumurl = "https://www.rijksmuseum.nl/en/collection/#{@objectnumber}"
-  @subject = @detail_result["artObject"]["classification"]["iconClassDescription"]
-  @colors = @detail_result["artObject"]["colors"]
+
   erb :detail
 end
 
@@ -73,7 +71,7 @@ get '/detail' do
   show_detail(params[:objectnumber])
 end
 
-def add_tags(objectnumber)
+def add_to_artobjects(objectnumber)
   artobject = Artobject.find_by(objectnumber:objectnumber)
   if artobject.nil?
     @detail_request = "https://www.rijksmuseum.nl/api/en/collection/#{objectnumber}?key=YB4GHC25&format=json"
@@ -92,8 +90,13 @@ def add_tags(objectnumber)
     erb :index
 end
 
+def add_to_artobjects_tags(objectnumber,stubby,tshirt,artprint)
+  erb :index
+end
+
 post '/artobjects_tag' do
-  add_tags(params[:objectnumber])
+  add_to_artobjects(params[:objectnumber])
+  add_to_artobjects_tags(params[:objectnumber, :stubby, :tshirt, :artprint])
 end
 
 get '/login' do
