@@ -1,7 +1,7 @@
 
 heroku pg:backups:restore 'https://github.com/karengeerts/Art-up-your-life---rijksart/raw/master/db.dump' DATABASE_URL
 
-
+pg_dump -Fc --no-acl --no-owner -h localhost -U karen 'https://github.com/karengeerts/Art-up-your-life---rijksart/raw/master/db.dump' > db.dump
 
 
 
