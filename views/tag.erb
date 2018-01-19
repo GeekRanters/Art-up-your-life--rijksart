@@ -4,10 +4,14 @@
   <ul style="list-style: none;">
   <% @tagresults.each do |artobject| %>
       <li class="short_description">
+        <div class="resultimage">
         <a href="/detail?objectnumber=<%=artobject[:objectnumber]%>">
         <img class="thumbnail" src="<%=artobject[:webimage]%>">
-        <%=artobject[:title]%> by <%=artobject[:principalmaker]%>
         </a>
+        <div class="resultlabel">
+          <%=artobject[:title]%> by <%=artobject[:principalmaker]%>
+        </div>
+
       </li>
   <% end %>
   </ul>

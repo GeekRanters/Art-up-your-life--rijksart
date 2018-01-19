@@ -3,9 +3,9 @@
 <div class="results">
   <ul style="list-style: none;">
   <% @art_results.each do |art_result| %>
-      <li class="short_description">
+      <li class="results_short_description">
         <a href="/detail?objectnumber=<%=art_result[:objectNumber]%>">
-        <img class="thumbnail" src="http://lh5.ggpht.com/SgH3Qo-vYI8GGm7-b-Qt6lXgsCAIoU2VDRwO5LYSBVNhhbZCetcvc88ZPi518MTy0MHDrna4X4ZC1ymxVJVpzps8gqw=s0">
+        <img class="results_thumbnail" src="http://lh5.ggpht.com/SgH3Qo-vYI8GGm7-b-Qt6lXgsCAIoU2VDRwO5LYSBVNhhbZCetcvc88ZPi518MTy0MHDrna4X4ZC1ymxVJVpzps8gqw=s0">
           <%=art_result[:name] %>
         </a>
       </li>
