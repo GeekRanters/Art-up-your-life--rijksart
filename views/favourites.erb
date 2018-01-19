@@ -8,6 +8,10 @@
         <img class="thumbnail" src="<%=artobject[:webimage]%>">
           <%=artobject[:title]%> by <%=artobject[:principalmaker]%>
         </a>
+        <form action="/favourites/<%= artobject[:id] %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button>delete</button>
+        </form>
       </li>
   <% end %>
   </ul>

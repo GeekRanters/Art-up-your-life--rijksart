@@ -37,6 +37,6 @@ CREATE TABLE user_artobjects(
 	id SERIAL PRIMARY KEY,
 	user_id INTEGER NOT NULL,
   artobject_id INTEGER NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
-  FOREIGN KEY (artobject_id) REFERENCES artobjects(id) ON DELETE RESTRICT
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (artobject_id) REFERENCES artobjects(id) ON DELETE CASCADE
 );

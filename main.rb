@@ -105,6 +105,14 @@ get '/favourites' do
   erb :favourites
 end
 
+delete '/favourites/:id' do
+  id = params[:id]
+  fav_artobjects = User.find_by(id:current_user.id).artobjects
+  artobject = fav_artobjects.find_by(id:id)
+  artobject.destroy
+  redirect '/favourites'
+end
+
 get '/tag' do
   @tag_label=params[:tag]
   @tagresults = Tag.find_by(label: @tag_label).artobjects.reverse
