@@ -1,5 +1,17 @@
 <h1><%= @tag_label%> art works</h1>
 
+<% if @tag_label=="stubby holder" %>
+<h2><a href="http://www.stubbycoolersaustralia.com.au/designer/customize/33324603">Design a stubby holder!</a></h2>
+<% end %>
+
+<% if @tag_label=="t-shirt" %>
+<h2><a href="http://dastshirtautomat.com/">Design a t-shirt!</a></h2>
+<% end %>
+
+<% if @tag_label=="art print" %>
+<h2><a href="https://www.snapfish.com.au/store/canvas-decor">Print an artwork!</a></h2>
+<% end %>
+
 <div class="results">
   <ul style="list-style: none;">
   <% @tagresults.each do |artobject| %>
